@@ -33,7 +33,7 @@ jobs:
           export PATH=$PATH:$(pwd)/../toolchain/bin
           mkdir ../out
           make ARCH=arm64 O=../out merge_kirin710_defconfig
-          make ARCH=arm64 O=../out -j16
+          make ARCH=arm64 O=../out -j8
         env:
           ARCH: arm64
           CROSS_COMPILE: aarch64-linux-android-
