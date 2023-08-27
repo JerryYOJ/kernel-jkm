@@ -45,5 +45,5 @@ jobs:
       - name: Upload Image
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: "Image.zip"
-          path: ${GITHUB_WORKSPACE}/out/arch/arm64/boot/Image
+          name: "out.zip"
+          path: out
