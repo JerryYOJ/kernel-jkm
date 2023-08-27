@@ -5,8 +5,8 @@ name: Build Kernel
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
-  #push:
-  #  branches: [ "master" ]
+  push:
+    branches: [ "master" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -29,7 +29,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Set up environment
         run: |
-          export PATH="$PATH:${GITHUB_WORKSPACE}/toolchain/bin"  # Replace with actual cross-compiler path
+          export PATH="$PATH:${GITHUB_WORKSPACE}/toolchain/bin/"  # Replace with actual cross-compiler path
           export CROSS_COMPILE="aarch64-linux-android-"       # Replace with actual cross-compiler prefix
           export ARCH=arm64
 
@@ -37,8 +37,8 @@ jobs:
       - name: Build Kernel
         working-directory: kernel
         run: |
-          aarch64-linux-android-gcc -v
           echo $PATH
+          aarch64-linux-android-gcc -v
           mkdir ../out
           make ARCH=arm64 O=../out merge_kirin710_defconfig
           make ARCH=arm64 O=../out -j8
