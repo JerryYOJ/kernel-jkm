@@ -33,7 +33,8 @@ jobs:
           echo $PATH
           echo $ARCH
           echo $CROSS_COMPILE
-          echo $GITHUB_WORKSPACE
+          echo "$GITHUB_WORKSPACE/toolchain/bin" >> $GITHUB_PATH
+          ls
           aarch64-linux-android-gcc -v
           mkdir ../out
           make ARCH=arm64 O=../out merge_kirin710_defconfig
@@ -41,7 +42,6 @@ jobs:
         env:
           ARCH: arm64
           CROSS_COMPILE: aarch64-linux-android-
-          PATH: $PATH:${GITHUB_WORKSPACE}/toolchain/bin
           
       - name: Upload Image
         uses: actions/upload-artifact@v3.1.2
