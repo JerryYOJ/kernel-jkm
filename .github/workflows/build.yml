@@ -17,6 +17,10 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    env:
+      ARCH: arm64
+      CROSS_COMPILE: aarch64-linux-android-
+      PATH: ${PATH}:${GITHUB_WORKSPACE}/toolchain/bin
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -26,18 +30,13 @@ jobs:
         with:
           submodules: 'recursive'
 
-      # Runs a single command using the runners shell
-      - name: Set up environment
-        run: |
-          export PATH="$PATH:${GITHUB_WORKSPACE}/toolchain/bin/"  # Replace with actual cross-compiler path
-          export CROSS_COMPILE="aarch64-linux-android-"       # Replace with actual cross-compiler prefix
-          export ARCH=arm64
-
       # Runs a set of commands using the runners shell
       - name: Build Kernel
         working-directory: kernel
         run: |
           echo $PATH
+          echo $ARCH
+          echo $CROSS_COMPILE
           aarch64-linux-android-gcc -v
           mkdir ../out
           make ARCH=arm64 O=../out merge_kirin710_defconfig
