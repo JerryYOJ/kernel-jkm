@@ -17,10 +17,6 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    env:
-      ARCH: arm64
-      CROSS_COMPILE: aarch64-linux-android-
-      PATH: ${PATH}:${GITHUB_WORKSPACE}/toolchain/bin
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -41,6 +37,10 @@ jobs:
           mkdir ../out
           make ARCH=arm64 O=../out merge_kirin710_defconfig
           make ARCH=arm64 O=../out -j8
+        env:
+          ARCH: arm64
+          CROSS_COMPILE: aarch64-linux-android-
+          PATH: ${PATH}:${GITHUB_WORKSPACE}/toolchain/bin
           
       - name: Upload Image
         uses: actions/upload-artifact@v3.1.2
