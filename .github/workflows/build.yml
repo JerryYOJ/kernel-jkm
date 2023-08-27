@@ -30,11 +30,10 @@ jobs:
       - name: Build Kernel
         working-directory: kernel
         run: |
+          export PATH=$PATH:$(pwd)/../toolchain/bin
           echo $PATH
           echo $ARCH
           echo $CROSS_COMPILE
-          echo "$GITHUB_WORKSPACE/toolchain/bin" >> $GITHUB_PATH
-          ls
           aarch64-linux-android-gcc -v
           mkdir ../out
           make ARCH=arm64 O=../out merge_kirin710_defconfig
