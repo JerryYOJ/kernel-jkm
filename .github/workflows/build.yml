@@ -37,6 +37,8 @@ jobs:
       - name: Build Kernel
         working-directory: kernel
         run: |
+          aarch64-linux-android-gcc -v
+          echo $PATH
           mkdir ../out
           make ARCH=arm64 O=../out merge_kirin710_defconfig
           make ARCH=arm64 O=../out -j8
