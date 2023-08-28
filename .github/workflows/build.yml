@@ -41,11 +41,11 @@ jobs:
       - name: Upload Image
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: "Boot.zip"
+          name: "Kernel"
           path: out/arch/arm64/boot/
           
       - name: Upload Module
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: "Module.zip"
-          path: out/drivers/*/*.ko
+          name: "Drivers"
+          path: out/drivers/
