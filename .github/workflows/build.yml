@@ -48,4 +48,4 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
           name: "Drivers"
-          path: $(find /out/drivers/ -name '*.ko')
+          path: $(find out -name '*.ko')
