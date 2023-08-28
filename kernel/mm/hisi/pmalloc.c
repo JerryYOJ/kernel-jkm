@@ -427,7 +427,7 @@ static int pmalloc_pool_set_protection(struct gen_pool *pool, bool protection)
 
 int pmalloc_protect_pool(struct gen_pool *pool)
 {
-	return pmalloc_pool_set_protection(pool, false);
+	return pmalloc_pool_set_protection(pool, true);
 }
 
 
