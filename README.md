@@ -1,2 +1,2 @@
-# kernel-jkm
-custom kernel for jkm-al00/20
+# kernel-jkm-al00D_PIE
+custom kernel based on Jackman-AL00D_PIE
