@@ -44,17 +44,17 @@ jobs:
           name: "Kernel"
           path: out/arch/arm64/boot/
 
-      - name: Testing
-        run: |
-          echo $(cd out && find ~+ -type f -name '*.ko')
-          echo ${GITHUB_WORKSPACE}
-          echo ${HOME}
-          echo $HOME
-          echo $GITHUB_WORKSPACE
-          echo $(cd / && find $GITHUB_WORKSPACE/out -name '*.ko')
+      #- name: Testing
+      #  run: |
+      #    echo $(cd out && find ~+ -type f -name '*.ko')
+      #    echo ${GITHUB_WORKSPACE}
+      #    echo ${HOME}
+      #    echo $HOME
+      #    echo $GITHUB_WORKSPACE
+      #    echo $(cd / && find $GITHUB_WORKSPACE/out -name '*.ko')
           
       - name: Upload Module
         uses: actions/upload-artifact@v3.1.2
         with:
           name: "Drivers"
-          path: $(cd out && find ~+ -type f -name '*.ko')
+          path: out/drivers/**/*.ko
